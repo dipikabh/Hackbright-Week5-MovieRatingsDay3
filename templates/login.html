@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Login</h1>
+
+<form action='/process_login' method="POST">
+ <h2>Please Sign In</h2>
+
+  <div>
+    <label for="email">Email Address</label>
+    <input type="email"
+           name="email"
+           required
+           autofocus>
+  </div>
+
+  <div>
+    <label for="password-field">Password</label>
+    <input type="password"
+           name="password"
+           required>
+  </div>
+
+  <button type="submit">Sign In</button>
+
+</form>
+
+
+
+{% endblock %}

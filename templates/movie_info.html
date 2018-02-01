@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h2>Movie Info</h2>
+  {% if session.get('logged_in_user') %}
+    <form action="/rate_movie/{{ session['logged_in_user'] }}" method='POST'>
+      <input type='hidden' name='movie' value='{{ movie.movie_id }}'>
+      <input type='number' name='rating' min='1' max='5'></input>
+      <input type='submit' value='Enter a rating'>
+    </form>
+  {% endif %}
+  <ul>
+      <li>Id: {{ movie.movie_id }}</li>
+      <li>Title: {{ movie.title }}</li>
+      <li>Release Date: {{ movie.release_at }}</li>
+      <li>IMDB URL: <a href={{ movie.imdb_url }}>{{ movie.imdb_url }}</a></li>
+      <li>Ratings:</li>
+      {% for rating in movie.ratings %}
+        <div style="margin-left: 20px">{{ rating.score }}</div>
+      {% endfor %}
+  </ul>
+
+{% endblock %}
